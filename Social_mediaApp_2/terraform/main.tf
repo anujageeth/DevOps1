@@ -4,7 +4,7 @@ provider "aws" {
 
 
 resource "aws_instance" "social" {
-  ami           = "ami-00a929b66ed6e0de6" 
+  ami           = "ami-0c02fb55956c7d316" 
   instance_type = "t3.micro"
   key_name      = "my-ec2-key"
   associate_public_ip_address = true
