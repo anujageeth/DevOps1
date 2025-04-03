@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-00101c3551c99b710"
+  ami           = "ami-0c02fb55956c7d316"
   instance_type = "t2.micro"
   key_name      = "my-ec2-key"
 
