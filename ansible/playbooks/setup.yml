@@ -1,0 +1,9 @@
+---
+- name: Setup EC2 instance
+  hosts: tag_Name_app_server
+  become: yes
+  gather_facts: yes
+  
+  roles:
+    - common
+    - docker

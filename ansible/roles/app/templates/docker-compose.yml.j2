@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  frontend:
+    image: thimira20/session-react-frontend:latest
+    container_name: social-media-frontend
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
+  backend:
+    image: thimira20/session-node-backend:latest
+    container_name: social-media-backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      # Add other environment variables as needed
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,25 @@
+---
+- name: Create app directory
+  file:
+    path: /opt/social-media-app
+    state: directory
+    mode: '0755'
+
+- name: Create docker-compose.yml
+  template:
+    src: docker-compose.yml.j2
+    dest: /opt/social-media-app/docker-compose.yml
+    mode: '0644'
+
+- name: Pull Docker images
+  community.docker.docker_image:
+    name: "{{ item }}"
+    source: pull
+  loop:
+    - "thimira20/session-react-frontend:latest"
+    - "thimira20/session-node-backend:latest"
+
+- name: Start containers
+  community.docker.docker_compose:
+    project_src: /opt/social-media-app
+    state: present
